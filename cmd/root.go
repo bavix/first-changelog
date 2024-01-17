@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -14,7 +15,7 @@ var rootCmd = &cobra.Command{
 	Short: "Changelog generated automatically",
 	Run: func(cmd *cobra.Command, args []string) {
 		for _, arg := range args {
-			cmd.Println(app.GenChangelog(cmd.Context(), arg))
+			fmt.Println(app.GenChangelog(cmd.Context(), arg))
 		}
 	},
 }
