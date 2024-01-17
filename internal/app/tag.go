@@ -1,6 +1,7 @@
 package app
 
 import (
+	"strings"
 	"time"
 )
 
@@ -15,7 +16,7 @@ func (t tag) TagName() string {
 }
 
 func (t tag) Body() string {
-	return t.body
+	return strings.TrimSpace(t.body)
 }
 
 func (t tag) CreatedAt() string {
