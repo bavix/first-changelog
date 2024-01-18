@@ -4,7 +4,6 @@ go 1.21.6
 
 require (
 	github.com/google/go-github/v58 v58.0.0
-	github.com/hashicorp/go-version v1.6.0
 	github.com/spf13/cobra v1.8.0
 )
 
