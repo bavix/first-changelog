@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.7 - 2024-01-18
+
+### What's Changed
+
+* remove sort by [@rez1dent3](https://github.com/rez1dent3) in https://github.com/bavix/first-changelog/pull/4
+
+**Full Changelog**: https://github.com/bavix/first-changelog/compare/0.0.6...0.0.7
+
 ## 0.0.6 - 2024-01-18
 
 ### What's Changed
