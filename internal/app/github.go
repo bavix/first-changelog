@@ -4,12 +4,13 @@ import (
 	"bytes"
 	"context"
 	"embed"
-	"fmt"
 	"net/http"
+	"slices"
 	"strings"
 	"text/template"
 
 	"github.com/google/go-github/v58/github"
+	"github.com/hashicorp/go-version"
 )
 
 const name = "templates/changelog.tmpl"
@@ -25,27 +26,39 @@ func GenChangelog(ctx context.Context, path string) string {
 		return ""
 	}
 
-	releases, resp, err := client.
-		Repositories.
-		ListReleases(ctx, splits[0], splits[1], &github.ListOptions{PerPage: 500})
-	if err != nil {
-		return ""
-	}
+	tags := make([]tag, 0, 1024)
 
-	defer resp.Body.Close()
-
-	tags := make([]tag, 0, len(releases))
-
-	for _, release := range releases {
-		if release.GetPrerelease() {
-			continue
+	i := 0
+	for {
+		releases, resp, err := client.
+			Repositories.
+			ListReleases(ctx, splits[0], splits[1], &github.ListOptions{
+				PerPage: 500,
+				Page:    i,
+			})
+		if err != nil {
+			return ""
 		}
 
-		tags = append(tags, tag{
-			tagName:   *release.TagName,
-			body:      *release.Body,
-			createdAt: release.CreatedAt.Time,
-		})
+		resp.Body.Close()
+
+		if len(releases) == 0 {
+			break
+		}
+
+		for _, release := range releases {
+			if release.GetPrerelease() {
+				continue
+			}
+
+			tags = append(tags, tag{
+				tagName:   *release.TagName,
+				body:      *release.Body,
+				createdAt: release.CreatedAt.Time,
+			})
+		}
+
+		i++
 	}
 
 	parse, err := template.ParseFS(changelogTmpl, name)
@@ -53,10 +66,16 @@ func GenChangelog(ctx context.Context, path string) string {
 		return ""
 	}
 
+	slices.SortStableFunc(tags, func(a, b tag) int {
+		a1, _ := version.NewVersion(a.tagName)
+		b1, _ := version.NewVersion(b.tagName)
+
+		return b1.Compare(a1)
+	})
+
 	var buffer bytes.Buffer
 
 	if err = parse.Execute(&buffer, tags); err != nil {
-		fmt.Println("2", err)
 		return ""
 	}
 
