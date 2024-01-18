@@ -5,12 +5,10 @@ import (
 	"context"
 	"embed"
 	"net/http"
-	"slices"
 	"strings"
 	"text/template"
 
 	"github.com/google/go-github/v58/github"
-	"github.com/hashicorp/go-version"
 )
 
 const name = "templates/changelog.tmpl"
@@ -65,13 +63,6 @@ func GenChangelog(ctx context.Context, path string) string {
 	if err != nil {
 		return ""
 	}
-
-	slices.SortStableFunc(tags, func(a, b tag) int {
-		a1, _ := version.NewVersion(a.tagName)
-		b1, _ := version.NewVersion(b.tagName)
-
-		return b1.Compare(a1)
-	})
 
 	var buffer bytes.Buffer
 
