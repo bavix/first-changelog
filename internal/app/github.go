@@ -26,7 +26,7 @@ func GenChangelog(ctx context.Context, path string) string {
 
 	tags := make([]tag, 0, 1024)
 
-	i := 0
+	i := 1
 	for {
 		releases, resp, err := client.
 			Repositories.
