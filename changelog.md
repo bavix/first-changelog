@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.8 - 2024-01-19
+
+**Full Changelog**: https://github.com/bavix/first-changelog/compare/0.0.7...0.0.8
+
 ## 0.0.7 - 2024-01-18
 
 ### What's Changed
