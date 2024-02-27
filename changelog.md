@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.0.9 - 2024-02-20
+
+### What's Changed
+
+* Configure Mend Bolt for GitHub by [@mend-bolt-for-github](https://github.com/mend-bolt-for-github) in https://github.com/bavix/first-changelog/pull/5
+
+### New Contributors
+
+* [@mend-bolt-for-github](https://github.com/mend-bolt-for-github) made their first contribution in https://github.com/bavix/first-changelog/pull/5
+
+**Full Changelog**: https://github.com/bavix/first-changelog/compare/0.0.8...0.0.9
+
 ## 0.0.8 - 2024-01-19
 
 **Full Changelog**: https://github.com/bavix/first-changelog/compare/0.0.7...0.0.8
@@ -34,7 +46,7 @@ Test version
 
 ## What's Changed
 
-* update changelog.tmpl by @rez1dent3 in https://github.com/bavix/first-changelog/pull/2
+* update changelog.tmpl by [@rez1dent3](https://github.com/rez1dent3) in https://github.com/bavix/first-changelog/pull/2
 
 **Full Changelog**: https://github.com/bavix/first-changelog/compare/0.0.1...0.0.3
 
@@ -46,10 +58,10 @@ no text
 
 ## What's Changed
 
-* github actions by @rez1dent3 in https://github.com/bavix/first-changelog/pull/1
+* github actions by [@rez1dent3](https://github.com/rez1dent3) in https://github.com/bavix/first-changelog/pull/1
 
 ## New Contributors
 
-* @rez1dent3 made their first contribution in https://github.com/bavix/first-changelog/pull/1
+* [@rez1dent3](https://github.com/rez1dent3) made their first contribution in https://github.com/bavix/first-changelog/pull/1
 
 **Full Changelog**: https://github.com/bavix/first-changelog/commits/0.0.1
